@@ -1,0 +1,18 @@
+# Alleen de bestanden van de website gaan online
+/*
+!/.gitignore
+!/.nojekyll
+!/*.html
+!/muldex.css
+!/muldex.js
+!/logo.svg
+!/images/
+/images/*
+!/images/logos/
+!/images/website-*.png
+!/images/mobile-*.png
+!/images/david-mulder.jpg
+!/promo/
+/promo/*
+!/promo/muldex-showreel.mp4
+!/promo/showreel-poster.jpg

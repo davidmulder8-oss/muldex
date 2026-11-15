@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student | Muldex</title>
+<meta name="description" content="David Mulder, student Marketing en Communicatie aan het KW1C, bouwt met Muldex websites voor ondernemers en studenten.">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="muldex.css">
+</head>
+<body>
+<a class="skip" href="#main">Ga naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="logo.svg" alt="">Muldex</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="burger" aria-hidden="true"><i></i><i></i></span><span class="lbl sr-only">Menu</span></button>
+    <nav aria-label="Hoofdmenu">
+      <ul class="nav-links" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="websites.html">Websites</a></li>
+        <li><a href="student.html" aria-current="page">Student</a></li>
+        <li><a href="assortiment.html">Pakketten</a></li>
+        <li><a href="over-ons.html">About Us</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="mailto:info.muldex@gmail.com?subject=Offerte%20aanvragen">Offerte aanvragen</a>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1 class="enter">Student Marketing &amp; Communicatie, en <mark>ondernemer</mark></h1>
+      <p class="lead enter">Ik ben David Mulder en studeer aan het KW1C. Naast mijn opleiding bouw ik met Muldex websites voor ondernemers, en ook voor andere studenten</p>
+      <div class="actions enter">
+        <a class="btn btn-primary btn-arrow" href="mailto:info.muldex@gmail.com?subject=Studentenofferte">Vraag een studentenofferte aan<span class="arrow-box"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        <a class="btn btn-secondary" href="#projecten">Bekijk mijn projecten</a>
+      </div>
+    </div>
+    <figure style="margin:0;max-width:460px;justify-self:end;width:100%">
+      <div class="portrait"><img src="images/david-mulder.jpg" alt="Portret van David Mulder" width="1254" height="1254"></div>
+      <figcaption class="school"><img src="images/logos/kw1c.svg" alt="Koning Willem I College"></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section aria-labelledby="kan-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="kan-h">Wat ik kan</h2></div>
+    <div class="skills">
+      <div class="skill"><div class="top"><span>HTML &amp; CSS</span><span>85%</span></div><div class="bar" aria-hidden="true" style="--w:85%"><i></i></div></div>
+      <div class="skill"><div class="top"><span>Webdesign</span><span>80%</span></div><div class="bar" aria-hidden="true" style="--w:80%"><i></i></div></div>
+      <div class="skill"><div class="top"><span>Social media</span><span>70%</span></div><div class="bar" aria-hidden="true" style="--w:70%"><i></i></div></div>
+      <div class="skill"><div class="top"><span>SEO</span><span>65%</span></div><div class="bar" aria-hidden="true" style="--w:65%"><i></i></div></div>
+      <div class="skill"><div class="top"><span>JavaScript</span><span>60%</span></div><div class="bar" aria-hidden="true" style="--w:60%"><i></i></div></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="route-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="route-h">Mijn route</h2></div>
+    <ol class="route">
+      <li><span class="mono">Start</span><h3>Opleiding</h3><p>Begonnen met Marketing &amp; Communicatie aan het KW1C</p></li>
+      <li><span class="mono">Daarna</span><h3>Eerste projecten</h3><p>Websites en ontwerpen voor school en voor mensen om me heen</p></li>
+      <li><span class="mono">Toen</span><h3>Muldex</h3><p>Mijn eigen bedrijf opgericht om ondernemers online te helpen</p></li>
+      <li class="now"><span class="mono">Nu</span><h3>Klanten</h3><p>Websites bouwen voor ondernemers en voor andere studenten</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="projecten" aria-labelledby="projecten-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="projecten-h">Mijn projecten</h2><p>Websites en ontwerpen die ik heb gemaakt</p></div>
+    <p class="sr-only" id="count" role="status" aria-live="polite"></p>
+    <div class="filters" role="group" aria-label="Filter projecten">
+      <button type="button" class="chip" aria-pressed="true" data-filter="all">Alles</button>
+      <button type="button" class="chip" aria-pressed="false" data-filter="website">Websites</button>
+      <button type="button" class="chip" aria-pressed="false" data-filter="webshop">Webshops</button>
+      <button type="button" class="chip" aria-pressed="false" data-filter="huisstijl">Huisstijl</button>
+    </div>
+    <ul class="projects">
+      <li class="project" data-cat="website"><h3>Maas en Vrienden</h3><p>Website voor een eetcafé met menu, reserveren en evenementen</p><span class="status">Online</span></li>
+      <li class="project" data-cat="website"><h3>Altena Auto's</h3><p>Website voor een occasiondealer met occasions, inruilen en contact</p><span class="status">Online</span></li>
+      <li class="project" data-cat="website"><h3>Bassma Lunchroom</h3><p>Menukaart, openingstijden en online bestellen</p><span class="status wait">In onderhoud</span></li>
+      <li class="project" data-cat="website"><h3>Studio Klassiek</h3><p>Website voor een muziekstudio met studio huren en early access</p><span class="status wait">In onderhoud</span></li>
+      <li class="project" data-cat="webshop"><h3>JoWEwear</h3><p>Webshop voor bedrukking en gravering</p><span class="status wait">In onderhoud</span></li>
+      <li class="project" data-cat="huisstijl"><h3>Muldex</h3><p>Mijn eigen merk: logo, huisstijl, visitekaartje en deze website</p><span class="status">Online</span></li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="studenten-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="studenten-h">Ons assortiment voor studenten</h2><p>Zit jij ook op het KW1C? Dezelfde pakketten als voor ondernemers. Je vraagt een offerte aan en laat je studentenbewijs zien</p></div>
+    <div class="plans">
+    <article class="plan">
+      <div class="plan-top"><h3>Portfolio-website</h3></div>
+      <p class="for">Voor je portfolio of een eigen bedrijfje</p>
+      <p class="price">Offerte op aanvraag</p>
+      <p class="from mono">Vanaf &euro; 189 excl. btw</p>
+      <ul><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Onepager website</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Werkt op elke telefoon</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Contactformulier</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Basis-SEO</li></ul>
+      <a class="btn btn-secondary" href="mailto:info.muldex@gmail.com?subject=Offerte%20Portfolio-website">Vraag offerte aan</a>
+    </article>
+    <article class="plan featured">
+      <div class="plan-top"><h3>Studentenpakket Groei</h3><span class="pick">Meest gekozen</span></div>
+      <p class="for">Een complete website voor je bedrijf</p>
+      <p class="price">Offerte op aanvraag</p>
+      <p class="from mono">Vanaf &euro; 289 excl. btw</p>
+      <ul><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Website tot 6 pagina's</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Eigen ontwerp</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SEO-optimalisatie</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Google Bedrijfsprofiel</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Support</li></ul>
+      <a class="btn btn-primary btn-arrow" href="mailto:info.muldex@gmail.com?subject=Offerte%20Groei">Vraag offerte aan<span class="arrow-box"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+    </article>
+    <article class="plan">
+      <div class="plan-top"><h3>Studentenpakket Premium</h3></div>
+      <p class="for">Voor webshops en maatwerk</p>
+      <p class="price">Offerte op aanvraag</p>
+      <p class="from mono">Vanaf &euro; 399 excl. btw</p>
+      <ul><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Webshop of maatwerk</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Advertenties en social media</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Doorlopende ondersteuning</li></ul>
+      <a class="btn btn-secondary" href="mailto:info.muldex@gmail.com?subject=Offerte%20Premium">Vraag offerte aan</a>
+    </article>
+  </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap closing-inner">
+    <div><h2>Student bij het Koning Willem I College?</h2><p>Stuur een bericht en vertel waar je hulp bij nodig hebt</p></div>
+    <div class="actions">
+      <a class="btn btn-primary btn-arrow" href="mailto:info.muldex@gmail.com?subject=Offerte%20aanvragen">Vraag een offerte aan<span class="arrow-box"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <a class="btn btn-secondary" href="tel:+31645808319"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Bel 06 45808319</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><img src="logo.svg" alt="">Muldex</a>
+        <p style="margin-top:12px;max-width:340px">Websites en marketing voor lokale ondernemers. Bring your business online</p>
+      </div>
+      <div>
+        <h2>Pagina's</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="websites.html">Websites</a></li>
+          <li><a href="student.html">Student</a></li>
+          <li><a href="assortiment.html">Pakketten</a></li>
+          <li><a href="over-ons.html">About Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li>David Mulder</li>
+          <li><a href="mailto:info.muldex@gmail.com">info.muldex@gmail.com</a></li>
+          <li><a href="tel:+31645808319">06 45808319</a></li>
+          <li><a href="https://muldex.netlify.app">muldex.netlify.app</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Muldex &middot; <button class="cookie-link" type="button">Cookie-instellingen</button> &middot; <a href="privacy.html">Privacyverklaring</a></span><span>Student Marketing &amp; Communicatie aan het KW1C</span></div>
+  </div>
+</footer>
+<div class="quickbar" role="group" aria-label="Snel contact">
+  <a class="btn btn-secondary" href="tel:+31645808319"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Bel</a>
+  <a class="btn btn-primary" href="mailto:info.muldex@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>Mail</a>
+</div>
+<script src="muldex.js"></script>
+</body>
+</html>
