@@ -548,3 +548,6 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 .portrait-zw img { -webkit-mask-image: linear-gradient(180deg, #000 75%, transparent 100%); mask-image: linear-gradient(180deg, #000 75%, transparent 100%); }
 .portrait-zw .portrait-quote { position: static; background: none; padding: 8px 0 0; }
 .portrait-zw .portrait-quote p { font-size: 20px; }
+
+/* Geen grijze rand om de showreel */
+.hero-boost .hero-media { border: 0; }
