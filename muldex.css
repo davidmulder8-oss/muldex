@@ -551,3 +551,6 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 
 /* Geen grijze rand om de showreel */
 .hero-boost .hero-media { border: 0; }
+
+/* Showreel loopt zacht over in de achtergrond */
+.hero-boost .hero-media { border: 0; border-radius: 0; box-shadow: none; background: transparent; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%), linear-gradient(180deg, transparent 0, #000 14%, #000 80%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%), linear-gradient(180deg, transparent 0, #000 14%, #000 80%, transparent 100%); mask-composite: intersect; }
