@@ -531,3 +531,7 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 .hero-boost .hero-text h1 { position: relative; z-index: 2; margin-bottom: -1.05em; text-shadow: 0 6px 30px rgba(0, 0, 0, 0.55); }
 .hero-boost .hero-media { z-index: 1; }
 @media (max-width: 1000px) { .hero-boost .hero-text h1 { margin-bottom: 0; } }
+
+/* "Bekijk mijn werk": zwart, zelfde kleur als de achtergrond */
+.hero-boost .btn-secondary { background: transparent; }
+.hero-boost .btn-secondary:hover { background: rgba(255, 255, 255, 0.04); }
