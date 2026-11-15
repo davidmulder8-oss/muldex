@@ -224,3 +224,12 @@
     document.body.classList.toggle('menu-open', btn.getAttribute('aria-expanded') === 'true');
   }).observe(btn, { attributes: true, attributeFilter: ['aria-expanded'] });
 })();
+
+// Bovenbalk krijgt pas een donkere tint als je scrolt
+(function () {
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  var on = function () { h.classList.toggle('is-scrolled', window.scrollY > 8); };
+  on();
+  window.addEventListener('scroll', on, { passive: true });
+})();
