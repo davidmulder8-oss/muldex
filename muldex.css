@@ -577,3 +577,12 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .hero-boost .hero-grid { align-items: stretch; }
   .hero-boost .sound-btn { right: 32px; bottom: 18px; }
 }
+
+/* Telefoon: showreel groter, tekst valt er zacht overheen */
+@media (max-width: 1000px) {
+  .hero-boost .hero-media { margin: -44px -20px 0; position: relative; z-index: 0; }
+  .hero-boost .hero-media video { aspect-ratio: 4 / 3.4; }
+  .hero-boost .hero-text h1, .hero-boost .hero-text .lead, .hero-boost .hero-text .typer { position: relative; z-index: 2; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.85); }
+  .hero-boost .hero-text .actions { position: relative; z-index: 2; margin-top: -28px; }
+}
+@media (max-width: 1000px) { .hero-boost .sound-btn { bottom: 52px; z-index: 3; } }
