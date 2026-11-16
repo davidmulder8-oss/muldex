@@ -610,3 +610,6 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .hero-boost .hero-media { order: 0; margin: -100px -20px 0; }
   .hero-boost .hero-text h1 { margin-top: 8px; }
 }
+@media (max-width: 1000px) {
+  .hero-boost .hero-text h1 { margin-top: -30px; position: relative; z-index: 2; }
+}
