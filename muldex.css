@@ -677,3 +677,50 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 .film-sound { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border: 0; border-radius: 999px; background: #2563EB; color: #fff; font: 700 15px/1 Montserrat, sans-serif; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,.45); }
 .film-sound svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .film-sound[hidden] { display: none; }
+
+/* ===== Nieuwe navigatie: zwevende glazen balk (desktop) ===== */
+@media (min-width: 821px) {
+  .site-header, .site-header.is-scrolled { background: transparent !important; border-bottom: 0 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; padding-top: 14px; pointer-events: none; }
+  .site-header .nav {
+    pointer-events: auto; position: relative;
+    max-width: 1120px; height: 62px; margin: 0 auto; padding: 0 7px 0 22px; gap: 20px;
+    border-radius: 999px;
+    background: rgba(16, 17, 23, 0.55);
+    -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 18px 50px rgba(0, 0, 0, 0.45);
+    transition: max-width 400ms var(--ease), background-color 300ms var(--ease), height 300ms var(--ease);
+  }
+  .site-header .nav::after { /* dun blauw lichtrandje onderaan */
+    content: ""; position: absolute; left: 12%; right: 12%; bottom: -1px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.9), transparent); opacity: .7; pointer-events: none;
+  }
+  .site-header.is-scrolled .nav { max-width: 980px; height: 56px; background: rgba(10, 10, 14, 0.82); }
+  .brand { font-weight: 800; font-size: 18px; letter-spacing: 0.06em; text-transform: uppercase; gap: 12px; }
+  .brand img { height: 24px; transition: transform 400ms var(--ease); }
+  .brand:hover img { transform: rotate(-8deg) scale(1.06); }
+  .site-header nav { margin: 0 auto; }
+  .nav-links { position: relative; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(255, 255, 255, 0.035); }
+  .nav-links li { position: relative; z-index: 1; }
+  .nav-links a, .nav-links a:hover, .nav-links a[aria-current="page"] { height: 38px; padding: 0 16px; border-radius: 999px; background: transparent; box-shadow: none; font-size: 14px; font-weight: 600; letter-spacing: .01em; }
+  .nav-links a { color: rgba(255, 255, 255, 0.62); }
+  .nav-links a:hover, .nav-links a.is-hot { color: #fff; }
+  .nav-links a[aria-current="page"] { color: #fff; }
+  .nav-ind {
+    position: absolute; z-index: 0; top: 4px; left: 0; height: 38px; width: 0; border-radius: 999px;
+    background: linear-gradient(180deg, #2f6df0, #2257d6);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: transform 380ms cubic-bezier(.3, 1.3, .5, 1), width 380ms cubic-bezier(.3, 1.3, .5, 1), opacity 200ms;
+    pointer-events: none;
+  }
+  .nav-cta { margin-left: 0; height: 48px; padding: 0 8px 0 22px; gap: 14px; background: #fff; color: #0b0b0f; font-weight: 700; }
+  .nav-cta:hover { background: #fff; }
+  .nav-cta .cta-arrow { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff; transition: transform 300ms var(--ease); }
+  .nav-cta:hover .cta-arrow { transform: rotate(45deg); }
+  .nav-cta .cta-arrow svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+}
+@media (min-width: 821px) and (prefers-reduced-motion: reduce) { .nav-ind, .site-header .nav { transition: none; } }
+@media (min-width: 821px) {
+  .site-header { position: fixed !important; left: 0; right: 0; top: 0; }
+  body { padding-top: 76px; }
+}

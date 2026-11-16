@@ -282,3 +282,27 @@
     }, { threshold: 0.4 }).observe(v);
   } else { start(); }
 })();
+
+// navigatie: blauwe markering schuift naar de link waar je op wijst
+(function () {
+  var ul = document.querySelector('.nav-links');
+  if (!ul || !window.matchMedia) return;
+  var mq = window.matchMedia('(min-width: 821px)');
+  var ind = document.createElement('span'); ind.className = 'nav-ind'; ind.setAttribute('aria-hidden', 'true');
+  ul.appendChild(ind);
+  var cur = ul.querySelector('a[aria-current="page"]');
+  var links = ul.querySelectorAll('a');
+  var go = function (a) {
+    if (!mq.matches) return;
+    links.forEach(function (x) { x.classList.toggle('is-hot', x === a); });
+    if (!a) { ind.style.opacity = '0'; return; }
+    ind.style.opacity = '1';
+    var li = a.parentNode; ind.style.width = li.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + li.offsetLeft + 'px)';
+  };
+  links.forEach(function (a) { a.addEventListener('mouseenter', function () { go(a); }); a.addEventListener('focus', function () { go(a); }); });
+  ul.addEventListener('mouseleave', function () { go(cur); });
+  var reset = function () { ind.style.transition = 'none'; go(cur); ind.offsetWidth; ind.style.transition = ''; };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(reset); else reset();
+  window.addEventListener('resize', reset);
+})();
