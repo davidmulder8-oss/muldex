@@ -604,3 +604,9 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .hero-boost .hero-media video { aspect-ratio: 1 / 1; }
   .hero-boost .hero-text .actions { margin-top: 28px; }
 }
+
+/* Telefoon: filmpje helemaal bovenaan, achter de onzichtbare balk (zoals Brand Boosters) */
+@media (max-width: 1000px) {
+  .hero-boost .hero-media { order: 0; margin: -100px -20px 0; }
+  .hero-boost .hero-text h1 { margin-top: 8px; }
+}
