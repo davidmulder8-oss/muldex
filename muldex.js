@@ -233,3 +233,28 @@
   on();
   window.addEventListener('scroll', on, { passive: true });
 })();
+
+// Zo werken we: de lijn met pijl loopt mee met scrollen
+(function () {
+  var ol = document.getElementById('journey');
+  if (!ol) return;
+  var line = ol.querySelector('.journey-line');
+  var steps = ol.querySelectorAll('.jstep');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    line.style.setProperty('--p', '100%');
+    steps.forEach(function (s) { s.classList.add('on'); });
+    return;
+  }
+  var tick = false;
+  var update = function () {
+    tick = false;
+    var anchor = window.innerHeight * 0.6;
+    var r = line.getBoundingClientRect();
+    var p = Math.max(0, Math.min(1, (anchor - r.top) / r.height));
+    line.style.setProperty('--p', (p * 100).toFixed(2) + '%');
+    steps.forEach(function (s) { s.classList.toggle('on', s.getBoundingClientRect().top + 12 < anchor); });
+  };
+  window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
