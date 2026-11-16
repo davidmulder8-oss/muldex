@@ -587,3 +587,10 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 }
 @media (max-width: 1000px) { .hero-boost .sound-btn { bottom: 52px; z-index: 3; } }
 @media (max-width: 820px) { .site-header, .site-header.is-scrolled { background: transparent !important; border-bottom-color: transparent !important; box-shadow: none; } }
+
+/* Telefoon: rustiger hero */
+@media (max-width: 1000px) {
+  .hero-boost .hero-media { margin: -20px -20px 0; }
+  .hero-boost .hero-text .actions { margin-top: 20px; }
+  .hero-boost .hero-text h1, .hero-boost .hero-text .lead, .hero-boost .hero-text .typer { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6); }
+}
