@@ -644,3 +644,6 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .hero-boost .hero-text { order: 1; position: relative; z-index: 2; margin-top: -84px; }
   .hero-boost .hero-text h1 { margin-bottom: 0; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6); }
 }
+
+/* Bovenbalk 85% doorzichtig */
+.site-header, .site-header.is-scrolled { background: rgba(3, 3, 4, 0.15) !important; border-bottom-color: transparent !important; }
