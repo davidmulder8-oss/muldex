@@ -724,3 +724,19 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .site-header { position: fixed !important; left: 0; right: 0; top: 0; }
   body { padding-top: 76px; }
 }
+
+/* navigatie rustiger: geen gloed, neutrale tinten */
+@media (min-width: 821px) {
+  .site-header .nav { background: rgba(14, 14, 18, 0.72); border-color: rgba(255, 255, 255, 0.07); box-shadow: none; }
+  .site-header.is-scrolled .nav { background: rgba(10, 10, 13, 0.9); }
+  .site-header .nav::after { display: none; }
+  .nav-links { background: none; }
+  .nav-ind { background: rgba(255, 255, 255, 0.08); box-shadow: none; transition: transform 300ms ease, width 300ms ease, opacity 200ms ease; }
+  .nav-links a { color: rgba(255, 255, 255, 0.55); font-weight: 500; }
+  .brand { letter-spacing: 0.04em; font-weight: 700; }
+  .brand:hover img { transform: none; }
+  .nav-cta { height: 44px; padding: 0 20px; gap: 10px; background: #fff; color: #0b0b0f; font-weight: 600; }
+  .nav-cta:hover { background: #e9e9ec; }
+  .nav-cta .cta-arrow { width: auto; height: auto; background: none; color: #0b0b0f; }
+  .nav-cta:hover .cta-arrow { transform: translate(2px, -2px); }
+}
