@@ -659,3 +659,6 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 .btn-primary.btn-arrow { background: var(--accent); color: #fff; }
 .btn-primary.btn-arrow:hover { background: #1f55d6; }
 .btn-primary.btn-arrow .arrow-box { background: rgba(255, 255, 255, 0.16); }
+
+/* Geen verticale lopende tekst meer rechts */
+.hero-boost .hero-grid { padding-right: 32px; }
