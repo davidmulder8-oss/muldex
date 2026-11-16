@@ -63,6 +63,8 @@
         img.src = t.getAttribute('data-img');
         img.alt = 'Schermafbeelding van ' + name;
         note.textContent = t.getAttribute('data-note');
+        var lk = document.getElementById('demo-link');
+        if (lk) { var u = t.getAttribute('data-link'); lk.hidden = !u; if (u) lk.href = u; }
         fallback.hidden = false;
       }
     };
