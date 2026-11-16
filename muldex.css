@@ -673,3 +673,7 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .film-media { max-width: 340px; margin: 0 auto; width: 100%; }
 }
 #demo-link { margin-top: 18px; }
+.film-media { position: relative; }
+.film-sound { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border: 0; border-radius: 999px; background: #2563EB; color: #fff; font: 700 15px/1 Montserrat, sans-serif; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,.45); }
+.film-sound svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.film-sound[hidden] { display: none; }

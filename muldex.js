@@ -260,3 +260,25 @@
   window.addEventListener('resize', update);
   update();
 })();
+
+// merkfilm: speelt vanzelf, met geluid als de browser dat toestaat, anders een knop
+(function () {
+  var v = document.getElementById('film-video'), b = document.getElementById('film-sound');
+  if (!v || !b) return;
+  var started = false;
+  var unmute = function () { v.muted = false; v.volume = 1; b.hidden = true; v.play(); };
+  b.addEventListener('click', unmute);
+  v.addEventListener('volumechange', function () { if (!v.muted) b.hidden = true; });
+  var start = function () {
+    if (started) return; started = true;
+    v.muted = false;
+    v.play().then(function () { b.hidden = true; }).catch(function () {
+      v.muted = true; v.play(); b.hidden = false;
+    });
+  };
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) start(); else if (started) v.pause(); if (e.isIntersecting && started && v.paused) v.play().catch(function () {}); });
+    }, { threshold: 0.4 }).observe(v);
+  } else { start(); }
+})();
