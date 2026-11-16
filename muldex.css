@@ -647,3 +647,10 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 
 /* Bovenbalk 85% doorzichtig */
 .site-header, .site-header.is-scrolled { background: rgba(3, 3, 4, 0.15) !important; border-bottom-color: transparent !important; }
+
+/* Telefoon: balk 100% onzichtbaar, filmpje helemaal tot bovenaan (alleen Home) */
+@media (max-width: 820px) {
+  .site-header, .site-header.is-scrolled { background: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  body:has(.hero-boost) .site-header { position: fixed; left: 0; right: 0; top: 0; }
+  .hero-boost .hero-media { margin-top: -32px; }
+}
