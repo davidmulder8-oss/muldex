@@ -654,3 +654,8 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   body:has(.hero-boost) .site-header { position: fixed; left: 0; right: 0; top: 0; }
   .hero-boost .hero-media { margin-top: -32px; }
 }
+
+/* Offerteknoppen blauw in plaats van wit */
+.btn-primary.btn-arrow { background: var(--accent); color: #fff; }
+.btn-primary.btn-arrow:hover { background: #1f55d6; }
+.btn-primary.btn-arrow .arrow-box { background: rgba(255, 255, 255, 0.16); }
