@@ -635,3 +635,12 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .jstep h3 { font-size: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .jstep { opacity: 1; transform: none; transition: none; } }
+
+/* Computer: filmpje bovenaan, tekst eronder en de kop valt er mooi overheen */
+@media (min-width: 1001px) {
+  .hero-boost { padding-top: 24px; }
+  .hero-boost .hero-grid { display: flex; flex-direction: column; gap: 0; }
+  .hero-boost .hero-media { order: 0; }
+  .hero-boost .hero-text { order: 1; position: relative; z-index: 2; margin-top: -84px; }
+  .hero-boost .hero-text h1 { margin-bottom: 0; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6); }
+}
