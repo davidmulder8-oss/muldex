@@ -594,3 +594,13 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .hero-boost .hero-text .actions { margin-top: 20px; }
   .hero-boost .hero-text h1, .hero-boost .hero-text .lead, .hero-boost .hero-text .typer { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6); }
 }
+
+/* Telefoon: veel rustiger hero, groter filmpje */
+@media (max-width: 1000px) {
+  .hero-boost .hero-text .typer { display: none; }
+  .hero-boost .hero-text h1, .hero-boost .hero-text .lead { text-shadow: none; }
+  .hero-boost .hero-text .lead { margin-top: 20px; }
+  .hero-boost .hero-media { margin: 28px -20px 0; }
+  .hero-boost .hero-media video { aspect-ratio: 1 / 1; }
+  .hero-boost .hero-text .actions { margin-top: 28px; }
+}
