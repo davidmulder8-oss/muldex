@@ -56,7 +56,7 @@
   var eur = function (n) { return '€ ' + n.toLocaleString('nl-NL'); };
   // Het pakket hangt alleen af van het soort website. Een mooier ontwerp is een toeslag, geen ander pakket.
   var pack = function () { return A.soort != null ? Q[0].opts[A.soort].pk : 0; };
-  var DESIGN_EXTRA = { '0-1': 30, '0-2': 60, '1-2': 40 }; // [pakket-ontwerpniveau]: toeslag; zit het niveau in je pakket, dan 0
+  var DESIGN_EXTRA = { '0-1': 10, '0-2': 25, '1-2': 25 }; // [pakket-ontwerpniveau]: toeslag; zit het niveau in je pakket, dan 0
   var designExtra = function (pk, lvl) { return DESIGN_EXTRA[pk + '-' + lvl] || 0; };
   // Bij Premium zit wekelijks onderhoud erin: die vraag slaan we dan over
   var skip = function (s) { return s.id === 'onderhoud' && pack() === 2; };
