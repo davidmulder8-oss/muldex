@@ -819,3 +819,8 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   body.menu-open .avail-links { display: none; }
   body.menu-open .avail-pop { left: 20px; right: auto; top: auto; bottom: 30px; }
 }
+/* bereikbaarheid subtieler */
+.availbar { font-size: 12px; letter-spacing: .01em; }
+.avail, .avail.is-on { color: rgba(255, 255, 255, 0.45); gap: 7px; }
+.avail-dot { width: 6px; height: 6px; background: rgba(255, 255, 255, 0.25); }
+.avail.is-on .avail-dot { background: #22c55e; opacity: .85; }
