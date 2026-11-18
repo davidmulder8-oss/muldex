@@ -785,3 +785,4 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .calc-opts.multi .calc-opt b { font-size: 15px; }
   .calc-opts.multi .calc-opt small { font-size: 13px; }
 }
+#prijs, #pakketten { scroll-margin-top: 90px; }
