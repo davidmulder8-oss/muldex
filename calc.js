@@ -14,9 +14,9 @@
       { t: 'Grotere website', d: 'Meer dan 6 pagina’s met veel diensten of informatie', pk: 2 },
       { t: 'Webshop', d: 'Producten verkopen met winkelwagen en online betalen', pk: 2 } ] },
     { id: 'design', q: 'Hoe uniek moet het ontwerp zijn?', hint: 'Elke website maak ik zelf, maar hoe ver gaan we?', opts: [
-      { t: 'Strak en eenvoudig', d: 'Een net, modern ontwerp in jouw kleuren', pk: 0 },
-      { t: 'Eigen ontwerp', d: 'Een ontwerp dat past bij jouw zaak en klanten', pk: 1 },
-      { t: 'Premium maatwerk', d: 'Volledig op maat, met extra aandacht voor elk detail', pk: 2 } ] },
+      { t: 'Strak en eenvoudig', d: 'Een net, modern ontwerp in jouw kleuren', lvl: 0 },
+      { t: 'Eigen ontwerp', d: 'Een ontwerp dat past bij jouw zaak en klanten', lvl: 1 },
+      { t: 'Premium maatwerk', d: 'Volledig op maat, met extra aandacht voor elk detail', lvl: 2 } ] },
     { id: 'functies', multi: true, q: 'Wat wil je er nog meer op?', hint: 'Kies er zoveel als je wilt, of geen. Een contactformulier zit er altijd bij.', opts: [
       { t: 'Reserveren of afspraken maken', d: 'Klanten boeken direct via je website', p: 15 },
       { t: 'Menukaart of prijslijst', d: 'Je aanbod overzichtelijk op een rij', p: 10 },
@@ -54,7 +54,10 @@
   var body = document.getElementById('calc-body'), count = document.getElementById('calc-count'), fill = document.getElementById('calc-fill');
   var back = document.getElementById('calc-back'), next = document.getElementById('calc-next'), top = document.querySelector('.calc-top');
   var eur = function (n) { return '€ ' + n.toLocaleString('nl-NL'); };
-  var pack = function () { return Math.max(A.soort != null ? Q[0].opts[A.soort].pk : 0, A.design != null ? Q[1].opts[A.design].pk : 0); };
+  // Het pakket hangt alleen af van het soort website. Een mooier ontwerp is een toeslag, geen ander pakket.
+  var pack = function () { return A.soort != null ? Q[0].opts[A.soort].pk : 0; };
+  var DESIGN_EXTRA = { '0-1': 30, '0-2': 60, '1-2': 40 }; // [pakket-ontwerpniveau]: toeslag; zit het niveau in je pakket, dan 0
+  var designExtra = function (pk, lvl) { return DESIGN_EXTRA[pk + '-' + lvl] || 0; };
   // Bij Premium zit wekelijks onderhoud erin: die vraag slaan we dan over
   var skip = function (s) { return s.id === 'onderhoud' && pack() === 2; };
   var list = function () { return Q.filter(function (s) { return !skip(s); }); };
@@ -92,17 +95,19 @@
   }
   function focusQ() { var h = body.querySelector('h2'); if (h) h.focus({ preventScroll: true }); var c = document.getElementById('calc'); if (c.getBoundingClientRect().top < 0) c.scrollIntoView({ behavior: 'smooth' }); }
 
-  function result() {
-    var pk = pack(), P = PACK[pk], once = P.p, month = 0, extra = [], lines = [];
+  // Rekent de prijs uit voor een set antwoorden (ook gebruikt door de test)
+  function compute(A) {
+    var pk = A.soort != null ? Q[0].opts[A.soort].pk : 0, P = PACK[pk], once = P.p, month = 0, extra = [], lines = [];
     Q.forEach(function (s) {
-      if (skip(s)) return;
+      if (s.id === 'onderhoud' && pk === 2) return;
       var a = A[s.id];
       if (s.multi) {
         (a || []).forEach(function (k) { once += s.opts[k].p; extra.push(s.opts[k].t); });
         lines.push(s.q + ' ' + ((a || []).length ? a.map(function (k) { return s.opts[k].t; }).join(', ') : 'Geen'));
       } else {
         var o = s.opts[a];
-        if (o.seo) { if (pk === 0) { once += SEO_START; extra.push('SEO-optimalisatie en Google Bedrijfsprofiel'); } }
+        if (s.id === 'design') { var de = designExtra(pk, o.lvl); if (de) { once += de; extra.push(o.lvl === 2 ? 'Premium ontwerp op maat' : 'Eigen ontwerp'); } }
+        else if (o.seo) { if (pk === 0) { once += SEO_START; extra.push('SEO-optimalisatie en Google Bedrijfsprofiel'); } }
         else if (o.p) { once += o.p; extra.push(o.x || o.t); }
         month += o.m || 0;
         lines.push(s.q + ' ' + o.t);
@@ -111,6 +116,11 @@
     if (pk === 2) month = 15;
     var raw = once, capped = raw > MAX && raw <= RUIMTE, over = raw > RUIMTE;
     if (capped) once = MAX; if (over) once = MAX + (raw - RUIMTE);
+    return { pk: pk, P: P, once: once, month: month, extra: extra, lines: lines, capped: capped, over: over, raw: raw };
+  }
+  window.MuldexCalc = { Q: Q, compute: compute };
+  function result() {
+    var R = compute(A), pk = R.pk, P = R.P, once = R.once, month = R.month, extra = R.extra, lines = R.lines, capped = R.capped, over = R.over;
     top.hidden = true; back.hidden = true; next.hidden = true;
     var perM = month ? ' + ' + eur(month) + ' per maand' : '';
     var mail = 'mailto:info.muldex@gmail.com?subject=' + encodeURIComponent('Gratis preview aanvragen') + '&body=' + encodeURIComponent('Hoi David,\n\nIk heb de prijscalculator ingevuld en wil graag een gratis preview.\n\nPakket: ' + P.n + '\nPrijs: vanaf ' + eur(once) + ' excl. btw' + perM + '\n\nMijn antwoorden:\n- ' + lines.join('\n- ') + '\n\nNaam van mijn zaak:\nMijn telefoonnummer:\n');
