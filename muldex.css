@@ -860,3 +860,4 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
 .faq details p { margin: 0 0 18px; color: var(--text-2); }
 .faq a { color: var(--accent-text); }
+.lp-school { margin-top: 28px; }
