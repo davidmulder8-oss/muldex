@@ -44,6 +44,11 @@
     var img = document.getElementById('demo-img');
     var note = document.getElementById('demo-note');
     var title = document.getElementById('demo-title');
+    var scrollBox = document.getElementById('demo-scroll'), scrollImg = document.getElementById('demo-scroll-img');
+    var phone = document.getElementById('demo-phone'), phoneImg = document.getElementById('demo-phone-img');
+    var info = document.getElementById('demo-info'), infoNote = document.getElementById('demo-info-note'), infoLink = document.getElementById('demo-info-link');
+    var stage = document.getElementById('demo-stage');
+    var noScroll = function () { if (scrollBox) scrollBox.hidden = true; if (phone) phone.hidden = true; if (info) info.hidden = true; if (stage) stage.classList.remove('has-phone'); };
     var show = function (t) {
       tabs.forEach(function (x) {
         var on = x === t;
@@ -52,6 +57,17 @@
       });
       var name = t.textContent;
       title.textContent = name;
+      var panel = document.getElementById('demo-panel'); if (panel) panel.classList.toggle('is-scroll', t.hasAttribute('data-scroll'));
+      if (t.hasAttribute('data-scroll') && scrollBox) {
+        frame.hidden = true; frame.src = 'about:blank'; fallback.hidden = true;
+        scrollImg.src = t.getAttribute('data-scroll'); scrollImg.alt = 'Voorpagina van ' + name + ' op de computer';
+        scrollBox.hidden = false; scrollBox.scrollTop = 0;
+        var m = t.getAttribute('data-mob');
+        if (m && phone) { phoneImg.src = m; phoneImg.alt = 'Voorpagina van ' + name + ' op de telefoon'; phone.hidden = false; phone.querySelector('.demo-phone-screen').scrollTop = 0; stage.classList.add('has-phone'); } else { phone.hidden = true; stage.classList.remove('has-phone'); }
+        infoNote.textContent = t.getAttribute('data-note') || ''; var u = t.getAttribute('data-link'); infoLink.hidden = !u; if (u) infoLink.href = u; info.hidden = false;
+        return;
+      }
+      noScroll();
       if (t.hasAttribute('data-src')) {
         fallback.hidden = true;
         frame.hidden = false;
