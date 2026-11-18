@@ -48,7 +48,8 @@
       { t: 'Wekelijks onderhoud', d: 'Elke week een controle, aanpassingen en snel antwoord', m: 15 } ] }
   ];
   var SEO_START = 15;
-  var MAX = 399; // meer dan dit betaal je nooit eenmalig // extra voor SEO-optimalisatie bij Start (bij Pro en Premium zit het erin)
+  var MAX = 399;    // normaal betaal je eenmalig nooit meer dan dit
+  var RUIMTE = 475; // pas boven dit ruwe bedrag (heel veel wensen) gaat de prijs verder omhoog // extra voor SEO-optimalisatie bij Start (bij Pro en Premium zit het erin)
   var A = {}, i = 0;
   var body = document.getElementById('calc-body'), count = document.getElementById('calc-count'), fill = document.getElementById('calc-fill');
   var back = document.getElementById('calc-back'), next = document.getElementById('calc-next'), top = document.querySelector('.calc-top');
@@ -108,7 +109,8 @@
       }
     });
     if (pk === 2) month = 15;
-    var capped = once > MAX; if (capped) once = MAX;
+    var raw = once, capped = raw > MAX && raw <= RUIMTE, over = raw > RUIMTE;
+    if (capped) once = MAX; if (over) once = MAX + (raw - RUIMTE);
     top.hidden = true; back.hidden = true; next.hidden = true;
     var perM = month ? ' + ' + eur(month) + ' per maand' : '';
     var mail = 'mailto:info.muldex@gmail.com?subject=' + encodeURIComponent('Gratis preview aanvragen') + '&body=' + encodeURIComponent('Hoi David,\n\nIk heb de prijscalculator ingevuld en wil graag een gratis preview.\n\nPakket: ' + P.n + '\nPrijs: vanaf ' + eur(once) + ' excl. btw' + perM + '\n\nMijn antwoorden:\n- ' + lines.join('\n- ') + '\n\nNaam van mijn zaak:\nMijn telefoonnummer:\n');
@@ -118,7 +120,7 @@
       '<p class="calc-sub">Eenmalig, exclusief btw' + (month ? ' &middot; plus ' + eur(month) + ' per maand voor onderhoud' : '') + '</p>' +
       '<div class="calc-pack"><div class="calc-pack-head"><span>Pakket</span><b>' + P.n + ' &middot; vanaf ' + eur(P.p) + '</b></div><ul>' + P.inc.map(li).join('') + '</ul>' +
       (extra.length ? '<div class="calc-pack-head calc-extra"><span>Plus jouw extra’s</span></div><ul>' + extra.map(li).join('') + '</ul>' : '') + '</div>' +
-      (capped ? '<p class="calc-hint"><b>Meer dan ' + eur(MAX) + ' betaal je bij Muldex niet.</b> De rest van je wensen zit er gratis bij.</p>' : '') + '<p class="calc-hint">De precieze prijs spreken we samen af na een vrijblijvend gesprek. De eerste preview is altijd gratis.</p>' +
+      (capped ? '<p class="calc-hint"><b>Je blijft op ' + eur(MAX) + '.</b> Een deel van je wensen zit er gratis bij.</p>' : '') + (over ? '<p class="calc-hint"><b>Jij wilt veel, en alles wordt voor je geregeld.</b> Daarom komt de prijs net boven ' + eur(MAX) + '. Een flink deel van je wensen zit er alsnog gratis bij.</p>' : '') + '<p class="calc-hint">De precieze prijs spreken we samen af na een vrijblijvend gesprek. De eerste preview is altijd gratis.</p>' +
       '<div class="actions"><a class="btn btn-primary btn-arrow" href="' + mail + '">Vraag je gratis preview aan<span class="arrow-box"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><button type="button" class="btn btn-secondary" id="calc-again">Opnieuw berekenen</button></div>';
     document.getElementById('calc-again').addEventListener('click', function () { A = {}; i = 0; show(); focusQ(); });
     focusQ();
