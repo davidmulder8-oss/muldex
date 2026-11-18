@@ -779,3 +779,9 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 .calc-pack li::before { content: ""; position: absolute; left: 2px; top: 6px; width: 5px; height: 9px; border: solid var(--accent-text); border-width: 0 2px 2px 0; transform: rotate(45deg); }
 .calc-extra { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
 .calc-price span { font-size: 0.4em; font-weight: 600; color: var(--text-2); }
+@media (min-width: 700px) {
+  .calc-opts.multi { grid-template-columns: 1fr 1fr; }
+  .calc-opts.multi .calc-opt { padding: 14px 16px; gap: 14px; }
+  .calc-opts.multi .calc-opt b { font-size: 15px; }
+  .calc-opts.multi .calc-opt small { font-size: 13px; }
+}

@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="muldex.css?v=1795006378">
+<link rel="stylesheet" href="muldex.css?v=1795007066">
 </head>
 <body>
 <a class="skip" href="#main">Ga naar de inhoud</a>
@@ -74,29 +74,37 @@
       { t: 'Strak en eenvoudig', d: 'Een net, modern ontwerp in jouw kleuren', pk: 0 },
       { t: 'Eigen ontwerp', d: 'Een ontwerp dat past bij jouw zaak en klanten', pk: 1 },
       { t: 'Premium maatwerk', d: 'Volledig op maat, met extra aandacht voor elk detail', pk: 2 } ] },
-    { id: 'functies', multi: true, q: 'Welke extra functies wil je?', hint: 'Kies er zoveel als je wilt, of geen. Een contactformulier zit er altijd bij.', opts: [
-      { t: 'Reserveren of afspraken maken', d: 'Klanten boeken direct via je website', p: 35 },
-      { t: 'Menukaart of overzicht van je werk', d: 'Je aanbod of projecten mooi in beeld', p: 25 },
-      { t: 'Nieuwsberichten', d: 'Zelf berichten plaatsen op je website', p: 25 },
-      { t: 'Meerdere talen', d: 'Bijvoorbeeld Nederlands en Engels', p: 45 },
-      { t: 'Sociale media en Google Maps', d: 'Je Instagram, reviews en route op je website', p: 15 } ] },
+    { id: 'functies', multi: true, q: 'Wat wil je er nog meer op?', hint: 'Kies er zoveel als je wilt, of geen. Een contactformulier zit er altijd bij.', opts: [
+      { t: 'Reserveren of afspraken maken', d: 'Klanten boeken direct via je website', p: 25 },
+      { t: 'Menukaart of prijslijst', d: 'Je aanbod overzichtelijk op een rij', p: 15 },
+      { t: 'Fotogalerij of portfolio', d: 'Je werk, zaak of producten mooi in beeld', p: 10 },
+      { t: 'Reviews van klanten', d: 'Laat zien wat klanten van je vinden', p: 10 },
+      { t: 'Sociale media en Google Maps', d: 'Je Instagram, Facebook en route op je website', p: 10 },
+      { t: 'WhatsApp-knop', d: 'Klanten sturen je met één tik een bericht', p: 5 },
+      { t: 'Veelgestelde vragen', d: 'Antwoorden op wat klanten vaak vragen', p: 10 },
+      { t: 'Offerte- of aanvraagformulier', d: 'Klanten vragen direct een offerte bij jou aan', p: 15 },
+      { t: 'Nieuwsberichten', d: 'Zelf berichten en acties plaatsen', p: 15 },
+      { t: 'Inschrijven voor nieuwsbrief', d: 'Bouw een lijst op met vaste klanten', p: 15 },
+      { t: 'Vacatures', d: 'Laat zien dat je personeel zoekt', p: 15 },
+      { t: 'Meerdere talen', d: 'Bijvoorbeeld Nederlands en Engels', p: 35 },
+      { t: 'Online betalen', d: 'Betalen met iDEAL bij een bestelling of reservering', p: 35 } ] },
     { id: 'huisstijl', q: 'Heb je al een logo en huisstijl?', hint: 'Een herkenbare stijl maakt je website sterker.', opts: [
       { t: 'Ja, dat heb ik al', d: 'Ik gebruik jouw logo en kleuren', p: 0 },
-      { t: 'Ik heb een logo nodig', x: 'Nieuw logo', d: 'Een nieuw logo voor je zaak', p: 75 },
-      { t: 'Complete huisstijl', d: 'Logo, kleuren, lettertypes en visitekaartje', p: 135 } ] },
+      { t: 'Ik heb een logo nodig', x: 'Nieuw logo', d: 'Een nieuw logo voor je zaak', p: 55 },
+      { t: 'Complete huisstijl', d: 'Logo, kleuren, lettertypes en visitekaartje', p: 99 } ] },
     { id: 'content', q: 'Wie zorgt voor de teksten en foto’s?', hint: 'Goede teksten helpen ook om gevonden te worden.', opts: [
       { t: 'Die lever ik zelf aan', d: 'Ik zet ze netjes op je website', p: 0 },
-      { t: 'Hulp bij de teksten', d: 'Ik schrijf de teksten met jouw input', p: 40 },
-      { t: 'Teksten en foto’s', d: 'Teksten en beeld, helemaal geregeld', p: 90 } ] },
+      { t: 'Hulp bij de teksten', d: 'Ik schrijf de teksten met jouw input', p: 30 },
+      { t: 'Teksten en foto’s', d: 'Teksten en beeld, helemaal geregeld', p: 65 } ] },
     { id: 'seo', q: 'Hoe belangrijk is gevonden worden in Google?', hint: 'Basis-SEO zit altijd in de prijs.', opts: [
       { t: 'Basis is genoeg', d: 'Goede titels, een snelle website en vindbaar in Google', p: 0 },
       { t: 'Beter gevonden worden in de buurt', d: 'SEO-optimalisatie en een Google Bedrijfsprofiel', seo: 1 } ] },
     { id: 'onderhoud', q: 'Wil je maandelijks onderhoud?', hint: 'Dit is een bedrag per maand, los van de eenmalige prijs. Je zit nergens lang aan vast.', opts: [
       { t: 'Nee, ik regel het zelf', d: 'Je krijgt alle bestanden mee', m: 0 },
-      { t: 'Maandelijks onderhoud', d: 'Hosting, updates, back-ups en kleine aanpassingen', m: 15 },
-      { t: 'Wekelijks onderhoud', d: 'Elke week een controle, aanpassingen en snel antwoord', m: 25 } ] }
+      { t: 'Maandelijks onderhoud', d: 'Hosting, updates, back-ups en kleine aanpassingen', m: 12 },
+      { t: 'Wekelijks onderhoud', d: 'Elke week een controle, aanpassingen en snel antwoord', m: 19 } ] }
   ];
-  var SEO_START = 50; // extra voor SEO-optimalisatie bij Start (bij Pro en Premium zit het erin)
+  var SEO_START = 35; // extra voor SEO-optimalisatie bij Start (bij Pro en Premium zit het erin)
   var A = {}, i = 0;
   var body = document.getElementById('calc-body'), count = document.getElementById('calc-count'), fill = document.getElementById('calc-fill');
   var back = document.getElementById('calc-back'), next = document.getElementById('calc-next'), top = document.querySelector('.calc-top');
@@ -155,7 +163,7 @@
         lines.push(s.q + ' ' + o.t);
       }
     });
-    if (pk === 2) month = 25;
+    if (pk === 2) month = 19;
     top.hidden = true; back.hidden = true; next.hidden = true;
     var perM = month ? ' + ' + eur(month) + ' per maand' : '';
     var mail = 'mailto:info.muldex@gmail.com?subject=' + encodeURIComponent('Gratis preview aanvragen') + '&body=' + encodeURIComponent('Hoi David,\n\nIk heb de prijscalculator ingevuld en wil graag een gratis preview.\n\nPakket: ' + P.n + '\nPrijs: vanaf ' + eur(once) + ' excl. btw' + perM + '\n\nMijn antwoorden:\n- ' + lines.join('\n- ') + '\n\nNaam van mijn zaak:\nMijn telefoonnummer:\n');
@@ -210,6 +218,6 @@
   <a class="btn btn-secondary" href="tel:+31645808319"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Bel</a>
   <a class="btn btn-primary" href="mailto:info.muldex@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>Mail</a>
 </div>
-<script src="muldex.js?v=1795006378"></script>
+<script src="muldex.js?v=1795007066"></script>
 </body>
 </html>
