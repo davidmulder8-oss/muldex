@@ -334,7 +334,7 @@
   };
   var bar = document.createElement('div');
   bar.className = 'availbar';
-  bar.innerHTML = '<div class="wrap availbar-in"><span class="avail-links"><a href="tel:+31645808319">06 45808319</a><a href="mailto:info.muldex@gmail.com">info.muldex@gmail.com</a></span>' +
+  bar.innerHTML = '<div class="wrap availbar-in">' +
     '<span class="avail"><i class="avail-dot" aria-hidden="true"></i><span class="avail-txt"></span></span>' +
     '<button type="button" class="avail-more" aria-expanded="false">Openingstijden</button>' +
     '<div class="avail-pop" hidden><b>Bereikbaar</b><dl>' +
