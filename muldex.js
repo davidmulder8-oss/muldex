@@ -306,3 +306,44 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(reset); else reset();
   window.addEventListener('resize', reset);
 })();
+
+// Bereikbaarheid: balkje bovenaan dat live laat zien of David bereikbaar is (Nederlandse tijd)
+(function () {
+  var header = document.querySelector('.site-header');
+  if (!header) return;
+  // 0 = zondag ... 6 = zaterdag; [van, tot] in hele uren, null = niet bereikbaar
+  var UREN = [null, [9, 22], [9, 22], [9, 22], [9, 22], [9, 23], [12, 17]];
+  var DAG = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
+  var hh = function (h) { return (h < 10 ? '0' : '') + h + ':00'; };
+  var nu = function () {
+    try {
+      var p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Amsterdam', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+      var g = {}; p.forEach(function (x) { g[x.type] = x.value; });
+      return { d: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(g.weekday), m: +g.hour * 60 + +g.minute };
+    } catch (e) { var n = new Date(); return { d: n.getDay(), m: n.getHours() * 60 + n.getMinutes() }; }
+  };
+  var tekst = function () {
+    var t = nu(), u = UREN[t.d];
+    if (u && t.m >= u[0] * 60 && t.m < u[1] * 60) return { on: true, s: 'Nu bereikbaar tot ' + hh(u[1]) };
+    if (u && t.m < u[0] * 60) return { on: false, s: 'Vandaag bereikbaar vanaf ' + hh(u[0]) };
+    for (var k = 1; k <= 7; k++) {
+      var d = (t.d + k) % 7;
+      if (UREN[d]) return { on: false, s: (k === 1 ? 'Morgen' : 'Op ' + DAG[d]) + ' bereikbaar vanaf ' + hh(UREN[d][0]) };
+    }
+    return { on: false, s: '' };
+  };
+  var bar = document.createElement('div');
+  bar.className = 'availbar';
+  bar.innerHTML = '<div class="wrap availbar-in"><span class="avail-links"><a href="tel:+31645808319">06 45808319</a><a href="mailto:info.muldex@gmail.com">info.muldex@gmail.com</a></span>' +
+    '<span class="avail"><i class="avail-dot" aria-hidden="true"></i><span class="avail-txt"></span></span>' +
+    '<button type="button" class="avail-more" aria-expanded="false">Openingstijden</button>' +
+    '<div class="avail-pop" hidden><b>Bereikbaar</b><dl>' +
+    '<dt>Maandag t/m donderdag</dt><dd>09:00 – 22:00</dd><dt>Vrijdag</dt><dd>09:00 – 23:00</dd><dt>Zaterdag</dt><dd>12:00 – 17:00</dd><dt>Zondag</dt><dd>Gesloten</dd></dl></div></div>';
+  header.insertBefore(bar, header.firstChild);
+  var txt = bar.querySelector('.avail-txt'), dot = bar.querySelector('.avail'), more = bar.querySelector('.avail-more'), pop = bar.querySelector('.avail-pop');
+  var zet = function () { var r = tekst(); txt.textContent = r.s; dot.classList.toggle('is-on', r.on); };
+  zet(); setInterval(zet, 60000);
+  more.addEventListener('click', function (e) { e.stopPropagation(); pop.hidden = !pop.hidden; more.setAttribute('aria-expanded', String(!pop.hidden)); });
+  document.addEventListener('click', function (e) { if (!pop.hidden && !pop.contains(e.target)) { pop.hidden = true; more.setAttribute('aria-expanded', 'false'); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) { pop.hidden = true; more.setAttribute('aria-expanded', 'false'); more.focus(); } });
+})();

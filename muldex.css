@@ -786,3 +786,36 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
   .calc-opts.multi .calc-opt small { font-size: 13px; }
 }
 #prijs, #pakketten { scroll-margin-top: 90px; }
+
+/* ===== Bereikbaarheidsbalk ===== */
+.availbar { pointer-events: auto; font-size: 13px; color: var(--text-2); }
+.availbar-in { position: relative; display: flex; align-items: center; justify-content: flex-end; gap: 22px; height: 30px; max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+.avail-links { display: flex; gap: 22px; margin-right: auto; }
+.avail-links a, .avail-more { color: var(--text-2); transition: color 150ms ease; }
+.avail-links a:hover, .avail-more:hover { color: var(--text); }
+.avail { display: inline-flex; align-items: center; gap: 8px; }
+.avail-dot { width: 8px; height: 8px; border-radius: 50%; background: #6b7080; }
+.avail.is-on { color: #4ade80; }
+.avail.is-on .avail-dot { background: #22c55e; }
+.avail-more { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, 0.25); }
+.avail-pop { position: absolute; right: 22px; top: 34px; z-index: 50; width: 310px; padding: 18px 20px; border-radius: 16px; background: #111216; border: 1px solid var(--line-strong); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); color: var(--text); }
+.avail-pop[hidden] { display: none; }
+.avail-pop b { display: block; margin-bottom: 10px; font-size: 14px; }
+.avail-pop dl { display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; margin: 0; font-size: 13px; }
+.avail-pop dt { color: var(--text-2); }
+.avail-pop dd { margin: 0; font-variant-numeric: tabular-nums; }
+@media (min-width: 821px) {
+  .site-header { padding-top: 4px !important; }
+  .availbar { transition: height 300ms ease, opacity 200ms ease; height: 34px; overflow: visible; }
+  .site-header.is-scrolled .availbar { height: 0; opacity: 0; pointer-events: none; overflow: hidden; }
+  body { padding-top: 100px; }
+}
+@media (max-width: 820px) {
+  .availbar { display: none; }
+}
+@media (max-width: 820px) {
+  body.menu-open .availbar { display: block; position: fixed; left: 0; right: 0; bottom: 100px; z-index: 41; font-size: 14px; }
+  body.menu-open .availbar-in { justify-content: flex-start; height: auto; padding: 0 20px; flex-wrap: wrap; gap: 10px 18px; }
+  body.menu-open .avail-links { display: none; }
+  body.menu-open .avail-pop { left: 20px; right: auto; top: auto; bottom: 30px; }
+}
