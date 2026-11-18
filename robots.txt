@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /promo/reel/
+
+Sitemap: https://davidmulder8-oss.github.io/muldex/sitemap.xml
