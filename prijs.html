@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bereken jouw prijs | Muldex</title>
+<meta name="description" content="Bereken in 8 korte vragen wat jouw website ongeveer kost. Gratis prijsindicatie van Muldex, zonder verplichtingen.">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="muldex.css?v=1795006183">
+</head>
+<body>
+<a class="skip" href="#main">Ga naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="logo.svg" alt="">Muldex</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="burger" aria-hidden="true"><i></i><i></i></span><span class="lbl sr-only">Menu</span></button>
+    <nav aria-label="Hoofdmenu">
+      <ul class="nav-links" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="websites.html">Websites</a></li>
+        <li><a href="student.html">Student</a></li>
+        <li><a href="assortiment.html">Pakketten</a></li>
+        <li><a href="over-ons.html">About Us</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="prijs.html">Bereken jouw prijs<span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="hero hero-short">
+  <div class="wrap">
+    <div class="hero-text">
+      <h1 class="enter">Bereken jouw <mark>prijs</mark></h1>
+      <p class="lead enter">Beantwoord 8 korte vragen en zie meteen wat jouw website ongeveer kost. Gratis en zonder verplichtingen</p>
+    </div>
+  </div>
+</section>
+<section style="border-top:0;padding-top:0" aria-label="Prijscalculator">
+  <div class="wrap">
+    <div class="calc" id="calc">
+      <div class="calc-top">
+        <span class="calc-count mono" id="calc-count">Vraag 1 van 8</span>
+        <div class="calc-bar" aria-hidden="true"><i id="calc-fill"></i></div>
+      </div>
+      <div class="calc-body" id="calc-body" aria-live="polite"></div>
+      <div class="calc-nav" id="calc-nav">
+        <button type="button" class="calc-back" id="calc-back">Vorige</button>
+        <button type="button" class="btn btn-primary" id="calc-next" hidden>Volgende</button>
+      </div>
+      <noscript><p>De calculator werkt met JavaScript. Mail liever? <a href="mailto:info.muldex@gmail.com?subject=Prijs%20website">info.muldex@gmail.com</a></p></noscript>
+    </div>
+  </div>
+</section>
+<script>
+(function () {
+  // Prijzen in euro, exclusief btw. Pas hier aan als je tarieven veranderen.
+  var Q = [
+    { id: 'soort', q: 'Wat voor website heb je nodig?', hint: 'Kies wat het beste past. Twijfel je? Kies dan de middelste.', opts: [
+      { t: 'Visitekaartje', d: 'Eén pagina met wie je bent, wat je doet en hoe je contact opneemt', p: 189 },
+      { t: 'Bedrijfswebsite', d: 'Meerdere pagina’s over je bedrijf, diensten en contact', p: 289 },
+      { t: 'Webshop', d: 'Producten verkopen met winkelwagen en online betalen', p: 449 } ] },
+    { id: 'paginas', q: 'Hoeveel pagina’s heb je ongeveer nodig?', hint: 'Bijvoorbeeld home, over ons, diensten, menu en contact.', opts: [
+      { t: '1 tot 3', d: 'Klein en overzichtelijk', p: 0 },
+      { t: '4 tot 7', d: 'De meeste lokale bedrijven zitten hier', p: 100 },
+      { t: '8 of meer', d: 'Veel diensten, producten of informatie', p: 225 } ] },
+    { id: 'design', q: 'Hoe uniek moet het ontwerp zijn?', hint: 'Elke website maak ik zelf, maar hoe ver gaan we?', opts: [
+      { t: 'Strak en eenvoudig', d: 'Een net, modern ontwerp in jouw kleuren', p: 0 },
+      { t: 'Maatwerk', d: 'Een eigen ontwerp dat past bij jouw zaak en klanten', p: 110 },
+      { t: 'Premium maatwerk', d: 'Volledig op maat, met animaties en extra aandacht voor elk detail', p: 250 } ] },
+    { id: 'functies', multi: true, q: 'Welke extra functies wil je?', hint: 'Kies er zoveel als je wilt, of geen. Een contactformulier zit er altijd bij.', opts: [
+      { t: 'Reserveren of afspraken', d: 'Klanten boeken direct via je website', p: 75 },
+      { t: 'Menukaart of portfolio', d: 'Je aanbod of werk mooi in beeld', p: 50 },
+      { t: 'Nieuws of blog', d: 'Zelf berichten plaatsen', p: 60 },
+      { t: 'Meerdere talen', d: 'Bijvoorbeeld Nederlands en Engels', p: 90 },
+      { t: 'Social media en Google Maps', d: 'Je Instagram, reviews en route op je site', p: 35 } ] },
+    { id: 'huisstijl', q: 'Heb je al een logo en huisstijl?', hint: 'Een herkenbare stijl maakt je website sterker.', opts: [
+      { t: 'Ja, dat heb ik al', d: 'Ik gebruik jouw logo en kleuren', p: 0 },
+      { t: 'Ik heb een logo nodig', d: 'Een nieuw logo voor je zaak', p: 125 },
+      { t: 'Complete huisstijl', d: 'Logo, kleuren, lettertypes en visitekaartje', p: 225 } ] },
+    { id: 'content', q: 'Wie zorgt voor de teksten en foto’s?', hint: 'Goede teksten helpen ook om gevonden te worden.', opts: [
+      { t: 'Die lever ik zelf aan', d: 'Ik zet ze netjes op je website', p: 0 },
+      { t: 'Hulp bij de teksten', d: 'Ik schrijf de teksten met jouw input', p: 75 },
+      { t: 'Teksten en foto’s', d: 'Teksten en beeld, helemaal geregeld', p: 175 } ] },
+    { id: 'seo', q: 'Hoe belangrijk is gevonden worden in Google?', hint: 'Basis-SEO zit altijd in de prijs.', opts: [
+      { t: 'Basis is genoeg', d: 'Goede titels, snelle site en Google-vermelding', p: 0 },
+      { t: 'Extra lokaal gevonden worden', d: 'Gericht op zoekopdrachten in jouw buurt', p: 95 } ] },
+    { id: 'onderhoud', q: 'Wil je hulp na de lancering?', hint: 'Dit is een bedrag per maand, los van de eenmalige prijs.', opts: [
+      { t: 'Nee, ik doe het zelf', d: 'Je krijgt alle bestanden mee', m: 0 },
+      { t: 'Hosting en onderhoud', d: 'Online houden, updates en back-ups', m: 15 },
+      { t: 'Wekelijks onderhoud en support', d: 'Elke week aanpassingen en snel antwoord', m: 35 } ] }
+  ];
+  var A = {}, i = 0;
+  var body = document.getElementById('calc-body'), count = document.getElementById('calc-count'), fill = document.getElementById('calc-fill');
+  var back = document.getElementById('calc-back'), next = document.getElementById('calc-next'), top = document.querySelector('.calc-top');
+  var eur = function (n) { return '€ ' + n.toLocaleString('nl-NL'); };
+  var round5 = function (n) { return Math.round(n / 5) * 5; };
+
+  function show() {
+    if (i >= Q.length) return result();
+    var s = Q[i], cur = A[s.id];
+    top.hidden = false;
+    count.textContent = 'Vraag ' + (i + 1) + ' van ' + Q.length;
+    fill.style.width = (i / Q.length * 100) + '%';
+    body.innerHTML = '<h2 class="calc-q" tabindex="-1">' + s.q + '</h2><p class="calc-hint">' + s.hint + '</p><div class="calc-opts' + (s.multi ? ' multi' : '') + '" role="group">' +
+      s.opts.map(function (o, k) {
+        var on = s.multi ? (cur || []).indexOf(k) > -1 : cur === k;
+        return '<button type="button" class="calc-opt" aria-pressed="' + on + '" data-k="' + k + '"><span class="calc-mark" aria-hidden="true"></span><span><b>' + o.t + '</b><small>' + o.d + '</small></span></button>';
+      }).join('') + '</div>';
+    back.hidden = i === 0;
+    next.hidden = !s.multi;
+    next.textContent = s.multi && !(cur || []).length ? 'Geen extra’s, verder' : 'Volgende';
+    body.querySelectorAll('.calc-opt').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = +b.getAttribute('data-k');
+        if (s.multi) {
+          var arr = (A[s.id] || []).slice(), at = arr.indexOf(k);
+          if (at > -1) arr.splice(at, 1); else arr.push(k);
+          A[s.id] = arr; b.setAttribute('aria-pressed', String(at < 0));
+          next.textContent = arr.length ? 'Volgende' : 'Geen extra’s, verder';
+        } else {
+          A[s.id] = k;
+          body.querySelectorAll('.calc-opt').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+          setTimeout(function () { i++; show(); focusQ(); }, 220);
+        }
+      });
+    });
+  }
+  function focusQ() { var h = body.querySelector('h2'); if (h) h.focus({ preventScroll: true }); var c = document.getElementById('calc'); if (c.getBoundingClientRect().top < 0) c.scrollIntoView({ behavior: 'smooth' }); }
+
+  function result() {
+    var once = 0, month = 0, lines = [];
+    Q.forEach(function (s) {
+      var a = A[s.id];
+      if (s.multi) { (a || []).forEach(function (k) { once += s.opts[k].p; }); lines.push(s.q + ' ' + ((a || []).length ? a.map(function (k) { return s.opts[k].t; }).join(', ') : 'Geen')); }
+      else { var o = s.opts[a]; once += o.p || 0; month += o.m || 0; lines.push(s.q + ' ' + o.t); }
+    });
+    var lo = round5(once), hi = round5(once * 1.2);
+    var pack = (A.design === 2 || A.soort === 2 || once >= 650) ? 'Premium' : (A.soort === 1 || once >= 350) ? 'Pro' : 'Start';
+    top.hidden = true; back.hidden = true; next.hidden = true;
+    var mail = 'mailto:info.muldex@gmail.com?subject=' + encodeURIComponent('Gratis preview aanvragen') + '&body=' + encodeURIComponent('Hoi David,\n\nIk heb de prijscalculator ingevuld en wil graag een gratis preview.\n\nPrijsindicatie: ' + eur(lo) + ' tot ' + eur(hi) + ' excl. btw' + (month ? ', plus ' + eur(month) + ' per maand' : '') + '\nPassend pakket: ' + pack + '\n\nMijn antwoorden:\n- ' + lines.join('\n- ') + '\n\nNaam van mijn zaak:\nMijn telefoonnummer:\n');
+    body.innerHTML = '<p class="calc-count mono">Jouw prijsindicatie</p><h2 class="calc-price" tabindex="-1">' + eur(lo) + ' <span>tot</span> ' + eur(hi) + '</h2>' +
+      '<p class="calc-sub">Eenmalig, exclusief btw' + (month ? ' &middot; plus ' + eur(month) + ' per maand' : '') + '</p>' +
+      '<div class="calc-pack"><span>Past het best bij</span><b>Pakket ' + pack + '</b></div>' +
+      '<p class="calc-hint">Dit is een indicatie. De precieze prijs spreken we samen af na een vrijblijvend gesprek, en de eerste preview is altijd gratis.</p>' +
+      '<div class="actions"><a class="btn btn-primary btn-arrow" href="' + mail + '">Vraag je gratis preview aan<span class="arrow-box"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><button type="button" class="btn btn-secondary" id="calc-again">Opnieuw berekenen</button></div>';
+    document.getElementById('calc-again').addEventListener('click', function () { A = {}; i = 0; show(); focusQ(); });
+    focusQ();
+  }
+  back.addEventListener('click', function () { if (i > 0) { i--; show(); focusQ(); } });
+  next.addEventListener('click', function () { if (!A[Q[i].id]) A[Q[i].id] = []; i++; show(); focusQ(); });
+  show();
+})();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><img src="logo.svg" alt="">Muldex</a>
+        <p style="margin-top:12px;max-width:340px">Websites en marketing voor lokale ondernemers. Bring your business online</p>
+      </div>
+      <div>
+        <h2>Pagina's</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="websites.html">Websites</a></li>
+          <li><a href="student.html">Student</a></li>
+          <li><a href="assortiment.html">Pakketten</a></li>
+          <li><a href="over-ons.html">About Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li>David Mulder</li>
+          <li><a href="mailto:info.muldex@gmail.com">info.muldex@gmail.com</a></li>
+          <li><a href="tel:+31645808319">06 45808319</a></li>
+          <li><a href="https://davidmulder8-oss.github.io/muldex/">davidmulder8-oss.github.io/muldex</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Muldex &middot; <button class="cookie-link" type="button">Cookie-instellingen</button> &middot; <a href="privacy.html">Privacyverklaring</a></span><span>Student Marketing &amp; Communicatie aan het KW1C</span></div>
+  </div>
+</footer>
+<div class="quickbar" role="group" aria-label="Snel contact">
+  <a class="btn btn-secondary" href="tel:+31645808319"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Bel</a>
+  <a class="btn btn-primary" href="mailto:info.muldex@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>Mail</a>
+</div>
+<script src="muldex.js?v=1795006183"></script>
+</body>
+</html>
