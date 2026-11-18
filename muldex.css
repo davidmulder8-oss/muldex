@@ -864,3 +864,12 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 .lp-links { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px 24px; }
 .lp-links a { display: block; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--text-2); transition: color 150ms ease; }
 .lp-links a:hover { color: var(--text); }
+
+/* Google-score in de bovenbalk */
+.availbar-in { gap: 18px; }
+.g-rating { display: inline-flex; align-items: center; gap: 6px; color: rgba(255, 255, 255, 0.7); transition: color 150ms ease; }
+.g-rating:hover { color: #fff; }
+.g-logo { width: 14px; height: 14px; }
+.g-score { font-weight: 600; font-variant-numeric: tabular-nums; }
+.g-stars { display: inline-flex; gap: 1px; }
+.g-stars svg { width: 11px; height: 11px; fill: #fbbc04; }
