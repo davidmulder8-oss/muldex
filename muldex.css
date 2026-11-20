@@ -671,9 +671,19 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 }
 #demo-link { margin-top: 18px; }
 .film-media { position: relative; }
-.film-sound { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border: 0; border-radius: 999px; background: #2563EB; color: #fff; font: 700 15px/1 Montserrat, sans-serif; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,.45); }
+.film-sound { position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border: 0; border-radius: 999px; background: #2563EB; color: #fff; font: 700 15px/1 Montserrat, sans-serif; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,.45); }
 .film-sound svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .film-sound[hidden] { display: none; }
+.film-sound.is-on { left: auto; right: 14px; bottom: 14px; transform: none; padding: 9px 14px; font-size: 13px; background: rgba(0,0,0,.6); box-shadow: none; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.film-sound.is-on svg { width: 16px; height: 16px; }
+/* filmpjes zijn vast: geen spoelbalk en geen afspeelknop van de browser */
+#hero-video, #film-video { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+#hero-video { pointer-events: none; }
+#film-video { cursor: pointer; }
+#hero-video::-webkit-media-controls, #film-video::-webkit-media-controls,
+#hero-video::-webkit-media-controls-panel, #film-video::-webkit-media-controls-panel,
+#hero-video::-webkit-media-controls-overlay-play-button, #film-video::-webkit-media-controls-overlay-play-button,
+#hero-video::-webkit-media-controls-start-playback-button, #film-video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; opacity: 0; }
 
 /* ===== Nieuwe navigatie: zwevende glazen balk (desktop) ===== */
 @media (min-width: 821px) {

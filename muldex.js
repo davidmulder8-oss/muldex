@@ -153,7 +153,7 @@
   var v = document.getElementById('hero-video');
   var b = document.querySelector('.sound-btn');
   if (!v) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; if (b) b.hidden = true; }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); if (b) b.hidden = true; }
   if (b) b.addEventListener('click', function () {
     v.muted = !v.muted;
     if (!v.muted) v.play();
@@ -277,26 +277,41 @@
   update();
 })();
 
-// merkfilm: speelt vanzelf, met geluid als de browser dat toestaat, anders een knop
+// merkfilm: speelt vanzelf als een vast filmpje (geen spoelbalk), met een eigen geluidsknop
 (function () {
   var v = document.getElementById('film-video'), b = document.getElementById('film-sound');
   if (!v || !b) return;
   var started = false;
-  var unmute = function () { v.muted = false; v.volume = 1; b.hidden = true; v.play(); };
-  b.addEventListener('click', unmute);
-  v.addEventListener('volumechange', function () { if (!v.muted) b.hidden = true; });
+  var show = function () { b.hidden = false; b.classList.toggle('is-on', !v.muted); b.setAttribute('aria-pressed', String(!v.muted)); b.lastChild.nodeValue = v.muted ? 'Geluid aan' : 'Geluid uit'; };
+  var toggle = function () { v.muted = !v.muted; if (!v.muted) v.volume = 1; v.play().catch(function () {}); show(); };
+  b.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });
+  v.addEventListener('click', toggle);
+  v.addEventListener('volumechange', show);
   var start = function () {
     if (started) return; started = true;
     v.muted = false;
-    v.play().then(function () { b.hidden = true; }).catch(function () {
-      v.muted = true; v.play(); b.hidden = false;
-    });
+    v.play().then(show).catch(function () { v.muted = true; v.play().catch(function () {}); show(); });
   };
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) start(); else if (started) v.pause(); if (e.isIntersecting && started && v.paused) v.play().catch(function () {}); });
     }, { threshold: 0.4 }).observe(v);
   } else { start(); }
+})();
+
+// Filmpjes zijn vast: geen bediening, geen beeld-in-beeld. Lukt autoplay niet (iPhone in energiebesparing), dan start hij bij de eerste aanraking.
+(function () {
+  var vids = [].slice.call(document.querySelectorAll('#hero-video, #film-video'));
+  if (!vids.length) return;
+  vids.forEach(function (v) { v.controls = false; v.disablePictureInPicture = true; v.addEventListener('contextmenu', function (e) { e.preventDefault(); }); });
+  var kick = function () {
+    vids.forEach(function (v) {
+      if (!v.paused) return;
+      if (v.id === 'hero-video' && v.hasAttribute('autoplay')) v.play().catch(function () {});
+      if (v.id === 'film-video') { var r = v.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) v.play().catch(function () {}); }
+    });
+  };
+  ['touchstart', 'click', 'scroll'].forEach(function (t) { document.addEventListener(t, kick, { passive: true }); });
 })();
 
 // navigatie: blauwe markering schuift naar de link waar je op wijst
