@@ -113,6 +113,7 @@ section.navy { background: var(--navy); }
 .logo-row li:hover img { opacity: 1; }
 .logo-w { filter: brightness(0) invert(1); }
 .logo-i { filter: invert(1) grayscale(1) brightness(1.5); }
+.logo-a { filter: brightness(1.6) contrast(1.15); }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* Overzicht van pagina's */
