@@ -547,6 +547,13 @@ h1.boost { font-size: clamp(44px, 4.4vw, 64px); overflow-wrap: anywhere; }
 .portrait-zw .portrait-quote { position: static; background: none; padding: 8px 0 0; }
 .portrait-zw .portrait-quote p { font-size: 20px; }
 
+/* Over mij: quote zonder foto */
+.quote-card { position: relative; padding: 36px 32px 32px; border-radius: var(--radius-panel); border: 1px solid var(--line-strong); background: var(--card); }
+.quote-card { border-left: 4px solid var(--accent); }
+.quote-card .portrait-quote { position: static; background: none; padding: 0; }
+.quote-card .portrait-quote p { font-size: 26px; }
+@media (max-width: 820px) { .quote-card .portrait-quote p { font-size: 22px; } }
+
 /* Geen grijze rand om de showreel */
 .hero-boost .hero-media { border: 0; }
 

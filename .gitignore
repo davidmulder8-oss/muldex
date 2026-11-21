@@ -11,8 +11,6 @@
 !/images/logos/
 !/images/website-*.png
 !/images/mobile-*.png
-!/images/david-mulder.jpg
-!/images/david-mulder-zw.png
 !/promo/
 /promo/*
 !/promo/muldex-showreel.mp4
@@ -23,7 +21,6 @@
 !/images/website-*.webp
 !/images/scroll-*.webp
 !/images/mobile-*.webp
-!/images/david-mulder-zw.webp
 !/images/og-muldex.jpg
 !/images/apple-touch-icon.png
 !/promo/muldex-showreel-web.mp4
