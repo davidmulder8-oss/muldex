@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="muldex.css?v=1795285316">
+<link rel="stylesheet" href="muldex.css?v=1795447204">
 </head>
 <body>
 <a class="skip" href="#main">Ga naar de inhoud</a>
@@ -67,8 +67,10 @@
     </div>
     <div class="hero-media enter">
       <video id="hero-video" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback x-webkit-airplay="deny" preload="metadata" poster="promo/showreel-poster.jpg" aria-label="Showreel: zo bouwt Muldex een website">
+        <source media="(max-width: 820px)" src="promo/muldex-showreel-mobiel.mp4?v=3" type="video/mp4">
         <source src="promo/muldex-showreel-web.mp4?v=1795027633" type="video/mp4">
       </video>
+      <script>if(matchMedia("(max-width: 820px)").matches)document.getElementById("hero-video").poster="promo/showreel-mobiel-poster.jpg?v=3";</script>
     </div>
   </div>
 </section>
@@ -170,7 +172,7 @@
     </div>
   </div>
 </section>
-<script src="calc.js?v=1795285316"></script>
+<script src="calc.js?v=1795447204"></script>
 
 <section class="navy" aria-label="Muldex in cijfers">
   <div class="wrap stats">
@@ -237,6 +239,6 @@
     <div class="footer-bottom"><span>&copy; 2026 Muldex &middot; <button class="cookie-link" type="button">Cookie-instellingen</button> &middot; <a href="privacy.html">Privacyverklaring</a></span><span>Student Marketing &amp; Communicatie aan het KW1C</span></div>
   </div>
 </footer>
-<script src="muldex.js?v=1795285316"></script>
+<script src="muldex.js?v=1795447204"></script>
 </body>
 </html>
